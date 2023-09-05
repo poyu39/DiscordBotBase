@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "Bot Start",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/Bot.py",
+        }
+    ]
+}

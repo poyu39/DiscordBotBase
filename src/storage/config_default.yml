@@ -1,0 +1,23 @@
+# Discord Bot Base
+# version 1.0
+# 這個是範例檔案，請複製檔案至 storage\config.yml
+
+# 機器人基本設定
+command_prefix: '!'
+token: ''
+application_id: 
+activity: ''
+guild_id:
+
+# 基本回覆訊息
+replier:
+  info:
+    color: 0x705FD9
+  debug:
+    color: 0xEBE9F2
+  success:
+    color: 0x15BFA0
+  error:
+    color: 0xF26389
+  warning:
+    color: 0xF27405
