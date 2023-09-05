@@ -49,34 +49,31 @@ class BotLogger:
     def get_logger(self):
         return self.logger
 
-class Replier(discord.Embed):
-    def __init__(self):
-        super().__init__()
-
+class Replier:
     def info(self, name='', value='', inline=False):
-        self.add_field(name=name, value=value, inline=inline)
-        self.color = CONFIG.REPLIER['info']['color']
-        return self
+        info_embed = discord.Embed(color=CONFIG.REPLIER['info']['color'])
+        info_embed.add_field(name=name, value=value, inline=inline)
+        return info_embed
     
     def debug(self, name='', value='', inline=False):
-        self.add_field(name=name, value=value, inline=inline)
-        self.color = CONFIG.REPLIER['debug']['color']
-        return self
+        debug_embed = discord.Embed(color=CONFIG.REPLIER['debug']['color'])
+        debug_embed.add_field(name=name, value=value, inline=inline)
+        return debug_embed
     
     def success(self, name='', value='', inline=False):
-        self.add_field(name=name, value=value, inline=inline)
-        self.color = CONFIG.REPLIER['success']['color']
-        return self
+        sucess_embed = discord.Embed(color=CONFIG.REPLIER['success']['color'])
+        sucess_embed.add_field(name=name, value=value, inline=inline)
+        return sucess_embed
     
     def error(self, name='', value='', inline=False):
-        self.add_field(name=name, value=value, inline=inline)
-        self.color = CONFIG.REPLIER['error']['color']
-        return self
+        error_embed = discord.Embed(color=CONFIG.REPLIER['error']['color'])
+        error_embed.add_field(name=name, value=value, inline=inline)
+        return error_embed
     
-    def warning(self, name:str, value:str, inline=False):
-        self.add_field(name=name, value=value, inline=inline)
-        self.color = CONFIG.REPLIER['warning']['color']
-        return self
+    def warning(self, name='', value='', inline=False):
+        warning_embed = discord.Embed(color=CONFIG.REPLIER['warning']['color'])
+        warning_embed.add_field(name=name, value=value, inline=inline)
+        return warning_embed
         
 CONFIG = Config()
 logger = BotLogger().get_logger()
