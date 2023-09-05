@@ -53,22 +53,22 @@ class Replier(discord.Embed):
     def __init__(self):
         super().__init__()
 
-    def info(self, name:str, value:str, inline=False):
+    def info(self, name='', value='', inline=False):
         self.add_field(name=name, value=value, inline=inline)
         self.color = CONFIG.REPLIER['info']['color']
         return self
     
-    def debug(self, name:str, value:str, inline=False):
+    def debug(self, name='', value='', inline=False):
         self.add_field(name=name, value=value, inline=inline)
         self.color = CONFIG.REPLIER['debug']['color']
         return self
     
-    def success(self, name:str, value:str, inline=False):
+    def success(self, name='', value='', inline=False):
         self.add_field(name=name, value=value, inline=inline)
         self.color = CONFIG.REPLIER['success']['color']
         return self
     
-    def error(self, name:str, value:str, inline=False):
+    def error(self, name='', value='', inline=False):
         self.add_field(name=name, value=value, inline=inline)
         self.color = CONFIG.REPLIER['error']['color']
         return self
