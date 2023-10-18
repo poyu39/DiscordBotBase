@@ -5,9 +5,10 @@
 # 機器人基本設定
 command_prefix: '!'
 token: ''
-application_id: 
+application_id:
 activity: ''
 guild_id:
+owner_id:
 
 # 基本回覆訊息
 replier:
