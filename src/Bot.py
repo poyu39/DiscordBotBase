@@ -1,17 +1,20 @@
 import asyncio
+import os
+
 import discord
 from discord.ext import commands
-import os
+
 from settings import Config, logger
 
 CONFIG = Config()
+
 
 class Bot(commands.Bot):
     def __init__(self):
         super().__init__(
             command_prefix=CONFIG.COMMDAND_PREFIX,
             intents=discord.Intents.all(),
-            application_id=CONFIG.APPLICATION_ID
+            application_id=CONFIG.APPLICATION_ID,
         )
 
         self.initial_extensions = [
@@ -37,7 +40,4 @@ class Bot(commands.Bot):
 
 
 bot = Bot()
-bot.run(
-    token=CONFIG.TOKEN,
-    log_handler=None
-)
+bot.run(token=CONFIG.TOKEN, log_handler=None)

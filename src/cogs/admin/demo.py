@@ -16,8 +16,11 @@ class Demo(commands.Cog):
 
     @commands.command()
     async def ping(self, ctx):
-        reply_embed = replier.info('Pong!', f'延遲: {self.bot.latency * 1000:.2f} ms')
+        reply_embed = replier.info(
+            'Pong!', f'延遲: {self.bot.latency * 1000:.2f} ms'
+        )
         await ctx.send(embed=reply_embed)
+
 
 async def setup(bot: commands.Bot) -> None:
     await bot.add_cog(Demo(bot), guild=bot.get_guild(CONFIG.GUILD_ID))

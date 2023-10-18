@@ -48,5 +48,6 @@ class ExtControl(commands.Cog):
             reply_embed = replier.success(value=f'已載入 {extension}')
             await ctx.send(embed=reply_embed)
 
+
 async def setup(bot: commands.Bot) -> None:
     await bot.add_cog(ExtControl(bot), guild=bot.get_guild(CONFIG.GUILD_ID))
