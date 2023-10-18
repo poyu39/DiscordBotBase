@@ -12,7 +12,7 @@ class Demo(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        logger.info('>>Demo is loaded<<')
+        logger.info('>>已載入 Demo<<')
 
     @commands.command()
     async def ping(self, ctx):

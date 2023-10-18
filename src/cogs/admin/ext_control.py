@@ -12,7 +12,7 @@ class ExtControl(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        logger.info('>>ExtControl is loaded<<')
+        logger.info('>>已載入 ExtControl<<')
 
     @commands.command()
     async def un(self, ctx, extension):
@@ -20,9 +20,13 @@ class ExtControl(commands.Cog):
             reply_embed = replier.error(value='此指令僅限擁有者使用')
             await ctx.send(embed=reply_embed)
         else:
-            await self.bot.unload_extension(f'cogs.{extension}')
-            logger.info(f'unloaded {extension} done')
-            reply_embed = replier.success(value=f'已卸載 {extension}')
+            try:
+                await self.bot.unload_extension(f'cogs.{extension}')
+                logger.info(f'已卸載 {extension}')
+                reply_embed = replier.success(value=f'已卸載 {extension}')
+            except Exception as e:
+                logger.error(f'{extension} 未載入', exc_info=e)
+                reply_embed = replier.error(value=f'{extension} 未載入\n{e}')
             await ctx.send(embed=reply_embed)
 
     @commands.command()
@@ -31,10 +35,16 @@ class ExtControl(commands.Cog):
             reply_embed = replier.error(value='此指令僅限擁有者使用')
             await ctx.send(embed=reply_embed)
         else:
-            await self.bot.reload_extension(f'cogs.{extension}')
-            await self.bot.tree.sync(guild=discord.Object(id=CONFIG.GUILD_ID))
-            logger.info(f'reloaded {extension} done')
-            reply_embed = replier.success(value=f'已重新載入 {extension}')
+            try:
+                await self.bot.reload_extension(f'cogs.{extension}')
+                await self.bot.tree.sync(
+                    guild=discord.Object(id=CONFIG.GUILD_ID)
+                )
+                logger.info(f'已重新載入 {extension}')
+                reply_embed = replier.success(value=f'已重新載入 {extension}')
+            except Exception as e:
+                logger.error(f'{extension} 未載入', exc_info=e)
+                reply_embed = replier.error(value=f'{extension} 未載入\n{e}')
             await ctx.send(embed=reply_embed)
 
     @commands.command()
@@ -43,9 +53,13 @@ class ExtControl(commands.Cog):
             reply_embed = replier.error(value='此指令僅限擁有者使用')
             await ctx.send(embed=reply_embed)
         else:
-            await self.bot.load_extension(f'cogs.{extension}')
-            logger.info(f'loaded {extension} done')
-            reply_embed = replier.success(value=f'已載入 {extension}')
+            try:
+                await self.bot.load_extension(f'cogs.{extension}')
+                logger.info(f'已載入 {extension}')
+                reply_embed = replier.success(value=f'已載入 {extension}')
+            except Exception as e:
+                logger.error(f'{extension} 未載入', exc_info=e)
+                reply_embed = replier.error(value=f'{extension} 未載入\n{e}')
             await ctx.send(embed=reply_embed)
 
 

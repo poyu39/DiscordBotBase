@@ -27,11 +27,14 @@ class Bot(commands.Bot):
 
     async def setup_hook(self):
         for ext in self.initial_extensions:
-            await self.load_extension(ext)
+            try:
+                await self.load_extension(ext)
+            except Exception as e:
+                logger.error(f'{ext} 未載入', exc_info=e)
         await self.tree.sync(guild=discord.Object(id=CONFIG.GUILD_ID))
 
     async def on_ready(self):
-        logger.info(">>Bot is online<<")
+        logger.info(">>Bot 已上線<<")
         activity = discord.Game(CONFIG.ACTIVITY)
         await self.change_presence(activity=activity)
 
